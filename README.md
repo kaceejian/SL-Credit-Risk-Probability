@@ -2,8 +2,6 @@
 
 ## Background
 
----
-
 LendingClub is a peer-to-peer lending services company that allows individual investors to partially fund personal loans as well as buy and sell notes backing the loans on a secondary market. LendingClub offers their previous data through an API.
 
 Based on this data, create machine learning models to classify the risk level of given loans. Specifically, compare the Logistic Regression model and Random Forest Classifier.
@@ -11,8 +9,6 @@ Based on this data, create machine learning models to classify the risk level of
 ---
 
 ## Process
-
----
 
 ### Step 1: Retrieve the data
 
