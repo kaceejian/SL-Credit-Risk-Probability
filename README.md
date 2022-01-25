@@ -1,52 +1,67 @@
-# Supervised Machine Learning Homework - Predicting Credit Risk
-
-In this assignment, you will be building a machine learning model that attempts to predict whether a loan from LendingClub will become high risk or not. 
+# Supervised Machine Learning - Predicting Credit Risk
 
 ## Background
 
+---
+
 LendingClub is a peer-to-peer lending services company that allows individual investors to partially fund personal loans as well as buy and sell notes backing the loans on a secondary market. LendingClub offers their previous data through an API.
 
-You will be using this data to create machine learning models to classify the risk level of given loans. Specifically, you will be comparing the Logistic Regression model and Random Forest Classifier.
+Based on this data, create machine learning models to classify the risk level of given loans. Specifically, compare the Logistic Regression model and Random Forest Classifier.
 
-## Instructions
+---
 
-### Retrieve the data
+## Process
 
-In the `Generator` folder in `Resources`, there is a [GenerateData.ipynb](/Resources/Generator/GenerateData.ipynb) notebook that will download data from LendingClub and output two CSVs: 
+---
 
-* `2019loans.csv`
-* `2020Q1loans.csv`
+### Step 1: Retrieve the data
 
-You will be using an entire year's worth of data (2019) to predict the credit risk of loans from the first quarter of the next year (2020).
+- Use an entire year's worth of data (2019) to predict the credit risk of loans from the first quarter of the next year (2020). The data is provided in two CSVs:
 
-Note: these two CSVs have been undersampled to give an even number of high risk and low risk loans. In the original dataset, only 2.2% of loans are categorized as high risk. To get a truly accurate model, special techniques need to be used on imbalanced data. Undersampling is one of those techniques. Oversampling and SMOTE (Synthetic Minority Over-sampling Technique) are other techniques that are also used.
+  - `2019loans.csv`
+  - `2020Q1loans.csv`
 
-## Preprocessing: Convert categorical data to numeric
+### Step 2: Preprocessing: Convert categorical data to numeric
 
-Create a training set from the 2019 loans using `pd.get_dummies()` to convert the categorical data to numeric columns. Similarly, create a testing set from the 2020 loans, also using `pd.get_dummies()`. Note! There are categories in the 2019 loans that do not exist in the testing set. If you fit a model to the training set and try to score it on the testing set as is, you will get an error. You need to use code to fill in the missing categories in the testing set. 
+- Create a training set from the 2019 loans using `pd.get_dummies()` to convert the categorical data to numeric columns.
+- Similarly, create a testing set from the 2020 loans, also using `pd.get_dummies()`.
 
-## Consider the models
+- Note: There are categories in the 2019 loans that do not exist in the 2020 testing set. If fitting the model to the training set and try to score it on the testing set as is, there will be an error. We need to use code to fill in the missing categories in the testing set before going to the next step.
 
-You will be creating and comparing two models on this data: a logistic regression, and a random forests classifier. Before you create, fit, and score the models, make a prediction as to which model you think will perform better. You do not need to be correct! Write down (in markdown cells in your Jupyter Notebook or in a separate document) your prediction, and provide justification for your educated guess.
+### Step 3: Consider the models
 
-## Fit a LogisticRegression model and RandomForestClassifier model
+- Create and compare two models on this data: a logistic regression, and a random forests classifier. Before creating, fitting and scoring the models, make a prediction as to which model we think will perform better.
+- Prediction:
+  - The logistic regression model wouldn't work well with our data, it's because it needs normal distribution data to work well.
+  - In contrast, the Random forest model would work better before the data is scaled.
 
-Create a LogisticRegression model, fit it to the data, and print the model's score. Do the same for a RandomForestClassifier. You may choose any starting hyperparameters you like. Which model performed better? How does that compare to your prediction? Write down your results and thoughts.
+### Step 4: Fit a LogisticRegression model and a RandomForestClassifier model
 
-## Revisit the Preprocessing: Scale the data
+- Create a LogisticRegression model, fit it to the data, and print the model's score. Do the same for a RandomForestClassifier.
+- Compare two models and confirm which one performed better. Also, check how the final results compare to the prediction.
 
-The data going into these models was never scaled, an important step in preprocessing. Use `StandardScaler` to scale the training and testing sets. Before re-fitting the LogisticRegression and RandomForestClassifier models on the scaled data, make another prediction about how you think scaling will affect the accuracy of the models. Write your predictions down and provide justification.
+### Step 5: Revisit the Preprocessing - Scale the data
 
-Fit and score the LogisticRegression and RandomForestClassifier models on the scaled data. How do the model scores compare to each other, and to the previous results on unscaled data? How does this compare to your prediction? Write down your results and thoughts.
+- The data going into these models was never scaled, an important step in preprocessing. Use `StandardScaler` to scale the training and testing sets.
+- Before re-fitting the LogisticRegression and RandomForestClassifier models on the scaled data, make another prediction about how scaling will affect the accuracy of the models.
+- Prediction:
 
-## Rubric
+  - It's believed that the logistic regression model will work better after the data is scaled, since standardizing is making the data into normal distribution, which works well with logistic model.
 
-[Unit 19 - Supervised Machine Learning Homework Rubric](https://docs.google.com/document/d/1f_eN3TYiGqlaWL9Utk5U-P491OeWqFSiv7FIlI_d4_U/edit?usp=sharing)
+- Finally, fit and score the LogisticRegression and RandomForestClassifier models on the scaled data. Confirm how the model scores compare to each other, and to the previous results on unscaled data. Compare final results with the prediction.
 
-### References
+## Final Results/Summary:
 
-LendingClub (2019-2020) _Loan Stats_. Retrieved from: [https://resources.lendingclub.com/](https://resources.lendingclub.com/)
+- It is observed that the Random Forest Model score stays around 0.63~0.64 before and after the data is scaled.
+- In contrast, the score for the Logistic Model improves a lot from 0.5168013611229264 to 0.767333049766057.
+- Based on the comparison, we can confirm that the score has improved by scaling the data, which is having the data being normally distributed.
 
-- - -
+---
 
-© 2021 Trilogy Education Services, a 2U, Inc. brand. All Rights Reserved.
+### References:
+
+- LendingClub (2019-2020) _Loan Stats_. Retrieved from: [https://resources.lendingclub.com/](https://resources.lendingclub.com/)
+
+---
+
+## Thank you!
